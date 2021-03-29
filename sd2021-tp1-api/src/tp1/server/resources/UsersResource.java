@@ -10,7 +10,7 @@ import jakarta.inject.Singleton;
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.Response.Status;
 import tp1.api.User;
-import tp1.api.service.RestUsers;
+import tp1.api.service.rest.RestUsers;
 
 @Singleton
 public class UsersResource implements RestUsers {

@@ -14,7 +14,7 @@ import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.ClientProperties;
 
 import tp1.api.User;
-import tp1.api.service.RestUsers;
+import tp1.api.service.rest.RestUsers;
 
 public class DeleteUserClient {
 
@@ -26,7 +26,7 @@ public class DeleteUserClient {
 	public static void main(String[] args) throws IOException {
 
 		if( args.length != 3) {
-			System.err.println( "Use: java sd2021.aula2.clients.DeleteUserClient url userId password");
+			System.err.println( "Use: java tp1.clients.DeleteUserClient url userId password");
 			return;
 		}
 

@@ -15,7 +15,7 @@ import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.ClientProperties;
 
 import tp1.api.User;
-import tp1.api.service.RestUsers;
+import tp1.api.service.rest.RestUsers;
 
 public class UpdateUserClient {
 
@@ -27,7 +27,7 @@ public class UpdateUserClient {
 	public static void main(String[] args) throws IOException {
 
 		if( args.length != 6) {
-			System.err.println( "Use: java sd2021.aula2.clients.UpdateUserClient url userId oldpwd fullName email password");
+			System.err.println( "Use: java tp1.clients.UpdateUserClient url userId oldpwd fullName email password");
 			return;
 		}
 
