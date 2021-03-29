@@ -9,8 +9,8 @@ import java.util.logging.Logger;
 import jakarta.inject.Singleton;
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.Response.Status;
-import sd2021.aula3.api.User;
-import sd2021.aula3.api.service.RestUsers;
+import tp1.api.User;
+import tp1.api.service.RestUsers;
 
 @Singleton
 public class UsersResource implements RestUsers {
@@ -144,7 +144,7 @@ public class UsersResource implements RestUsers {
 			users.remove(userId);
 		}
 
-		return rmv;
+		return aux;
 	}
 
 

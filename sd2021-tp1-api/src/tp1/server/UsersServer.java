@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
-import sd2021.aula3.server.resources.UsersResource;
+import tp1.server.resources.UsersResource;
 
 public class UsersServer {
 

@@ -14,8 +14,8 @@ import jakarta.ws.rs.core.Response.Status;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.ClientProperties;
 
-import sd2021.aula3.api.User;
-import sd2021.aula3.api.service.RestUsers;
+import tp1.api.User;
+import tp1.api.service.RestUsers;
 
 public class UpdateUserClient {
 
