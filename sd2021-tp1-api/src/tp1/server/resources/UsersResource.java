@@ -153,6 +153,7 @@ public class UsersResource implements RestUsers {
 		Log.info("searchUsers : pattern = " + pattern);
 		// TODO Complete method
 		List<User> ret = new ArrayList<>();
+		
 		synchronized(this){
 			for(Map.Entry<String,User> e: users.entrySet()){
 				if(e.getValue().getFullName().contains(pattern)){
