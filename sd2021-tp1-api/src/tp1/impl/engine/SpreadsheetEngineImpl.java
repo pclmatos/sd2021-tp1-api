@@ -101,8 +101,8 @@ public class SpreadsheetEngineImpl implements SpreadsheetEngine {
 				cell.setFormula(rawVal);
 			break;
 		case TEXT:
-			cell.setValue(rawVal);
-		break;
+				cell.setValue(rawVal);
+			break;
 		case IMPORTRANGE:
 			throw new RuntimeException("Not yet implemented...");
 		case EMPTY:
