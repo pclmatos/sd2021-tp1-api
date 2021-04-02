@@ -104,6 +104,7 @@ public class SpreadsheetEngineImpl implements SpreadsheetEngine {
 				cell.setValue(rawVal);
 			break;
 		case IMPORTRANGE:
+				sheet.getRangeValues(asdasd, range);
 			throw new RuntimeException("Not yet implemented...");
 		case EMPTY:
 			break;

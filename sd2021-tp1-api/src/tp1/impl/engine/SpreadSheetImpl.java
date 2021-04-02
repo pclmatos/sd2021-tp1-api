@@ -1,32 +1,37 @@
+import java.net.Socket;
 import java.util.List;
 
 import tp1.api.engine.AbstractSpreadsheet;
+import tp1.api.Spreadsheet;
 
 
 public class SpreadSheetImpl implements AbstractSpreadsheet{
 
-    public SpreadSheetImpl(){
+	Spreadsheet sheet;
+
+    public SpreadSheetImpl(SpreadSheet sheet){
+		this.sheet = sheet;
     }
 
     @Override
  	public int rows() {
- 		return this.getLines();
+ 		return sheet.getLines();
     }
      
  	@Override
  	public int columns() {
- 		return this.getColumns();
+ 		return sheet.getColumns();
     }
      
  	@Override
  	public String sheetId() {
- 		return this.getSheetId();
+ 		return sheet.getSheetId();
     }
      
- 	@Override
+ 	@Override 
  	public String cellRawValue(int row, int col) {
  		try {
- 			return this.getRawValues().get(row).get(col);
+ 			return sheet.getRawValues().get(row).get(col);
  		} catch( IndexOutOfBoundsException e) {
  			return "#ERR?";
  		}
@@ -34,8 +39,11 @@ public class SpreadSheetImpl implements AbstractSpreadsheet{
 
     @Override
     public List<String> getRangeValues(String sheetURL, String range) {
-        // TODO Auto-generated method stub
-        return null;
+		// TODO Auto-generated method stub
+		
+		
+
+        return sheet.getRows();
     }
 
 }
