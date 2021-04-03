@@ -71,9 +71,9 @@ public interface RestSpreadsheets {
 	
 	/**
 	 * Retrieves the calculated values of a spreadsheet.
-	 * @param userId - The user requesting the values
 	 * @param sheetId - the spreadsheet whose values are being retrieved.
-	 * @param password - the password of the owner of the spreadsheet
+	 * @param userId - The user requesting the values.
+	 * @param password - the password of the user requesting the values.
 	 * 
 	 * @return 200, if the operation is successful
 	 * 		   403, if the spreadsheet is not shared with user, or the user is not the owner, or the password is incorrect.
@@ -124,7 +124,7 @@ public interface RestSpreadsheets {
 	 * 
 	 */
 	@POST
-	@Path("{/{sheetId}/share/{userId}")
+	@Path("/{sheetId}/share/{userId}")
 	void shareSpreadsheet( @PathParam("sheetId") String sheetId, @PathParam("userId") String userId, 
 			@QueryParam("password") String password);
 
@@ -143,7 +143,7 @@ public interface RestSpreadsheets {
 	 * 		   400, otherwise
 	 */
 	@DELETE
-	@Path("{/{sheetId}/share/{userId}")
+	@Path("/{sheetId}/share/{userId}")
 	void unshareSpreadsheet( @PathParam("sheetId") String sheetId, @PathParam("userId") String userId, 
 			@QueryParam("password") String password);
 }
