@@ -41,7 +41,6 @@ public class SpreadSheetImpl implements AbstractSpreadsheet{
     public List<String> getRangeValues(String sheetURL, String range) {
 		// TODO Auto-generated method stub
 		
-		
 
         return sheet.getRows();
     }

@@ -22,7 +22,7 @@ public class SpreadSheetsResource implements RestSpreadsheets{
 
     private static Logger Log = Logger.getLogger(SpreadSheetsResource.class.getName());
 
-    public SpreadSheetsResource(){
+    public SpreadSheetResource(){
     }
 
     @Override
@@ -37,14 +37,17 @@ public class SpreadSheetsResource implements RestSpreadsheets{
             sheets.put(sheet.getSheetId(), sheet);
         }
 
-        return null;
+        return sheet.getSheetId();
     }
 
     @Override
     public void updateCell(String sheetId, String cell, String rawValue, String userId, String password) {
         // TODO Auto-generated method stub
         synchronized(this){
-            if( sheets.get(sheetId) == null){
+
+            Spreadsheet aux = sheets.get(sheetId);
+
+            if( aux == null){
                 Log.info("Sheet does not exist");
                 throw new WebApplicationException(Status.NOT_FOUND);
             }
@@ -54,12 +57,12 @@ public class SpreadSheetsResource implements RestSpreadsheets{
                 throw new WebApplicationException(Status.FORBIDDEN);
             }
 
-            if(!userId.equals(sheet.getOwner()) && !sheet.getSharedWith().contains(userId)){
+            if(!userId.equals(sheet.getOwner()) && !aux.getSharedWith().contains(userId)){
                 Log.info("No permission");
                 throw new WebApplicationException(Status.BAD_REQUEST);
             } else {
 
-                List<List<String>> values = sheets.get(sheetId).getRawValues();
+                List<List<String>> values = aux.getRawValues();
                 
                 Pair<Integer,Integer> cellValues = Cell.CellId2ListIndexes(cell);
 
@@ -124,6 +127,8 @@ public class SpreadSheetsResource implements RestSpreadsheets{
                 throw new WebApplicationException(Status.FORBIDDEN);
             }
 
+            sheets.remove(sheetId);
+
         }
         
     }
@@ -157,9 +162,9 @@ public class SpreadSheetsResource implements RestSpreadsheets{
                 throw new WebApplicationException(Status.BAD_REQUEST);
             }
 
+            return aux;
         }
 
-        return aux;
     }
 
     @Override
@@ -191,9 +196,9 @@ public class SpreadSheetsResource implements RestSpreadsheets{
                 throw new WebApplicationException(Status.FORBIDDEN);
             }
 
+            return aux.getRawValues();
         }
 
-        return aux.getRawValues();
     }
 
     @Override
