@@ -27,19 +27,20 @@ public class CreateSpreadsheet{
 	public static void main(String[] args) throws IOException {
 
 		if( args.length != 7) {
-			System.err.println( "Use: java tp1.spreadsheetClients.CreateSpreadsheet sheetId owner url lines columns sharedWith rawValues");
+			System.err.println( "Use: java tp1.spreadsheetClients.CreateSpreadsheet url sheetId owner sheetUrl lines columns");
 			return;
 		}
 
-		String sheetId = args[0];
-		String owner = args[1];
-		String sheetUrl = args[2];
-		int lines = args[3];
-		int columns = args[4];
-        List<String> sharedWith = args[5];
-        List<List<String>> rawValues = args[6];
+		String url = args[0];
+		String sheetId = args[1];
+		String owner = args[2];
+		String sheetUrl = args[3];
+		int lines = args[4];
+		int columns = args[5];
+        Set<String> sharedWith = new Set<>();
+        List<List<String>> rawValues = new ArrayList<>();
 
-		Spreadsheet sheet = new SpreadSheet(sheetId,owner,sheetUrl,lines,columns,sharedWith,rawValues);
+		Spreadsheet sheet = new Spreadsheet(sheetId,owner,sheetUrl,lines,columns,sharedWith,rawValues);
 
 		System.out.println("Sending request to server.");
 
@@ -50,7 +51,7 @@ public class CreateSpreadsheet{
 		config.property(ClientProperties.READ_TIMEOUT, REPLY_TIMEOUT);
 		Client client = ClientBuilder.newClient(config);
 
-		WebTarget target = client.target( serverUrl ).path( RestUsers.PATH );
+		WebTarget target = client.target( sheetUrl ).path( RestSpreadsheets.PATH );
 
 		short retries = 0;
 		boolean success = false;

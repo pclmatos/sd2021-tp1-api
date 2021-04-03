@@ -16,7 +16,7 @@ import jakarta.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.tuple.Pair;
 
-public class SpreadSheetsResource implements RestSpreadsheets{
+public class SpreadSheetResource implements RestSpreadsheets{
 
     private Map<String, Sheet> sheets = new HashMap<>();
 
@@ -29,6 +29,7 @@ public class SpreadSheetsResource implements RestSpreadsheets{
     public String createSpreadsheet(Spreadsheet sheet, String password) {
         // TODO Auto-generated method stub
 
+        /** 
         if(!sheet.getOwner().getPassword().equals(password)){
             Log.info("Password incorrect");
             throw new WebApplicationException(Status.BAD_REQUEST);
@@ -37,12 +38,14 @@ public class SpreadSheetsResource implements RestSpreadsheets{
             sheets.put(sheet.getSheetId(), sheet);
         }
 
+        */
         return sheet.getSheetId();
     }
 
     @Override
     public void updateCell(String sheetId, String cell, String rawValue, String userId, String password) {
         // TODO Auto-generated method stub
+        /** 
         synchronized(this){
 
             Spreadsheet aux = sheets.get(sheetId);
@@ -71,6 +74,7 @@ public class SpreadSheetsResource implements RestSpreadsheets{
             }
 
         }
+        */
 
     }
 
@@ -78,7 +82,7 @@ public class SpreadSheetsResource implements RestSpreadsheets{
     public void shareSpreadsheet(String sheetId, String userId, String password) {
         // TODO Auto-generated method stub
 
-        synchronized(this){
+        /**synchronized(this){
 
             SpreadSheet aux = sheets.get(sheetId);
             User u = users.get(userId);
@@ -105,7 +109,7 @@ public class SpreadSheetsResource implements RestSpreadsheets{
 
             aux.getSharedWith().add(userId);
 
-        }
+        }*/
         
     }
 
@@ -113,7 +117,7 @@ public class SpreadSheetsResource implements RestSpreadsheets{
     public void deleteSpreadsheet(String sheetId, String password) {
         // TODO Auto-generated method stub
 
-        synchronized(this){
+        /**synchronized(this){
 
             Spreadsheet aux = sheets.get(sheetId);
             
@@ -129,7 +133,7 @@ public class SpreadSheetsResource implements RestSpreadsheets{
 
             sheets.remove(sheetId);
 
-        }
+        }*/
         
     }
 
@@ -137,7 +141,7 @@ public class SpreadSheetsResource implements RestSpreadsheets{
     public Spreadsheet getSpreadsheet(String sheetId, String userId, String password) {
         // TODO Auto-generated method stub
 
-        synchronized(this){
+        /**synchronized(this){
 
             Spreadsheet aux = sheets.get(sheetId);
             User u = users.get(userId);
@@ -163,7 +167,8 @@ public class SpreadSheetsResource implements RestSpreadsheets{
             }
 
             return aux;
-        }
+        }*/
+        return null;
 
     }
 
@@ -171,7 +176,7 @@ public class SpreadSheetsResource implements RestSpreadsheets{
     public List<List<String>> getSpreadsheetValues(String sheetId, String userId, String password) {
         // TODO Auto-generated method stub
 
-        synchronized(this){
+        /**synchronized(this){
 
             Spreadsheet aux = sheets.get(sheetId);
             User u = users.get(userId);
@@ -197,7 +202,8 @@ public class SpreadSheetsResource implements RestSpreadsheets{
             }
 
             return aux.getRawValues();
-        }
+        }*/
+        return null;
 
     }
 
@@ -205,7 +211,7 @@ public class SpreadSheetsResource implements RestSpreadsheets{
     public void unshareSpreadsheet(String sheetId, String userId, String password) {
         // TODO Auto-generated method stub
 
-        synchronized(this){
+        /**synchronized(this){
 
             Spreadsheet aux = sheets.get(sheetId);
             User u = users.get(userId);
@@ -232,7 +238,7 @@ public class SpreadSheetsResource implements RestSpreadsheets{
 
             aux.getSharedWith().remove(userId);
 
-        }
+        }*/
 
     }
 
