@@ -62,13 +62,9 @@ public class SpreadsheetEngineImpl implements SpreadsheetEngine {
 				cell.setFormula(rawVal);
 			break;
 		case TEXT:
-				cell.setValue(rawVal);
-			break;
+			cell.setValue(rawVal);
+		break;
 		case IMPORTRANGE:
-<<<<<<< HEAD
-				sheet.getRangeValues(asdasd, range);
-			throw new RuntimeException("Not yet implemented...");
-=======
 			var matcher = IMPORTRANGE_PATTERN.matcher(rawVal);
 			if( matcher.matches()) {
 				var sheetUrl = matcher.group(1);
@@ -76,7 +72,6 @@ public class SpreadsheetEngineImpl implements SpreadsheetEngine {
 				var values = sheet.getRangeValues(sheetUrl, range);		
 				applyRange( worksheet, cell, new CellRange(range), values);
 			}
->>>>>>> 2a22605df4bb4ee3db7155702ba8ac08196ecf31
 		case EMPTY:
 			break;
 		};

@@ -117,7 +117,7 @@ public interface RestSpreadsheets {
 	 * @return 204, in case of success.
 	 * 		   404, if either the spreadsheet or user do not exist
 	 * 		   409, if the sheet is already shared with the user
-	 *         403 if theS password is incorrect.
+	 *         403 if the password is incorrect.
 	 * 		   400, otherwise
 	 * 
 	 */
